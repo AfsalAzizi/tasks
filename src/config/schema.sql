@@ -1,6 +1,0 @@
-CREATE TABLE IF NOT EXISTS tasks (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  status VARCHAR(20) NOT NULL CHECK (status IN ('pending', 'completed')),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-); 
