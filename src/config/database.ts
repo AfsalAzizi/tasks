@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+console.log("Initializing database connection...");
+
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || "5432"),
@@ -27,5 +29,17 @@ pool.on("error", (err) => {
   console.error("Unexpected error on idle client", err);
   process.exit(-1);
 });
+
+// Log when a client is acquired from the pool
+pool.on("acquire", (client) => {
+  console.log("Client acquired from pool");
+});
+
+// Log when a client is released back to the pool
+pool.on("release", (client) => {
+  console.log("Client released back to pool");
+});
+
+console.log("Database configuration completed");
 
 export default pool;
