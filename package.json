@@ -4,8 +4,9 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "dev": "nodemon src/app.ts",
     "build": "tsc",
+    "init-db": "ts-node src/database/init.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
