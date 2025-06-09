@@ -12,6 +12,12 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   ssl: { rejectUnauthorized: false },
+
+  // Pool configuration
+  max: 20, // Maximum number of connections in the pool
+  min: 4, // Minimum number of connections in the pool
+  idleTimeoutMillis: 30000, // How long a connection can be idle before being removed
+  connectionTimeoutMillis: 2000, // How long to wait for a connection
 });
 
 // Test the connection
